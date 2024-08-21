@@ -1,0 +1,43 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block header %}
+    <link rel="stylesheet" href="{% static 'css/reset.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/nav-style.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/products-style.css' %}"/>
+    <style>
+    table{
+        margin: 2rem;
+        
+    }
+    tr, th, td{
+        padding: 0.5rem;
+        border: 1px solid black;
+    }
+    
+    </style>
+{% endblock header %}
+
+{% block body %}
+<div class="product-list-container">
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Edit</th>
+        </tr>
+        {% for product in all_products %}
+            <tr>
+                <td>{{ product.name }}</td>
+                <td>{{ product.description }}</td>
+                <td>{{ product.price }}</td>
+                <td>
+                    <a href="/eshop/delete?id={{ product.id }}">Delete</a>
+                    <a href="/eshop/update?id={{ product.id }}">Update</a>
+                </td>
+            </tr>
+    {% endfor %}
+    </table>
+    
+</div>
+{% endblock body %}
