@@ -1,0 +1,31 @@
+
+{% extends 'index.html' %}
+{% load static %}
+{% block header %}
+    <link rel="stylesheet" href="{% static 'css/contact-form.css' %}">
+    <link rel="stylesheet" href="{% static 'css/login-style.css' %}">
+{% endblock header %}
+
+{% block body %}
+<div style="height: 100vh; display: flex; justify-content: center; align-items: center">
+<div class="login-container" style="height: fit-content">
+  <h1>Login</h1>
+  <form method="post" id="loginForm">
+      {% csrf_token %}
+      {{ form.as_p }}
+{#    <div class="input-group">#}
+{#      <label for="username">Username</label>#}
+{#      <input type="text" id="username" name="username" required>#}
+{#    </div>#}
+{#    <div class="input-group">#}
+{#      <label for="password">Password</label>#}
+{#      <input type="password" id="password" name="password" required>#}
+{#    </div>#}
+
+      <p style="color: red">{{ error_message }}</p>
+
+    <button type="submit">Login</button>
+  </form>
+</div>
+</div>
+{% endblock body %}
